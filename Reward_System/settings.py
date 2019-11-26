@@ -33,7 +33,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'manage_situation.apps.ManageSituationConfig',
     'account.apps.AccountConfig',
-    #'reward.apps.RewardConfig',
+    # 'reward.apps.RewardConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
