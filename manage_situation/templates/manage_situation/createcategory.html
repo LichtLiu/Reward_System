@@ -1,0 +1,36 @@
+
+
+
+<h1>Create_Cat</h1>
+{% if error %}
+
+{{ error }}
+
+<br />
+<br />
+{% endif %}
+
+
+
+<form method='POST' action='{% url 'createcategory' %}' enctype='multipart/form-data'>
+
+{% csrf_token %}
+
+<br />
+類別名稱category name:
+<input type='text' name='category'/>
+<br />
+事由cause:
+<input type='text' name='cuase'/>
+<br />
+
+罰勤時間time:
+<input type='text' name='time'/>
+<br />
+
+加扣點point:
+<input type='text' name='point'/>
+<br />
+
+<input class='btn btn-primary' type='submit' value='Add cuase'/>
+<form/>

@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Jekyll v3.8.5">
+    <title>Pricing example · Bootstrap</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/pricing/">
+
+    <!-- Bootstrap core CSS -->
+<link href="/docs/4.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+    <!-- Custom styles for this template -->
+    <link href="pricing.css" rel="stylesheet">
+  </head>
+  <body>
+    <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+  <h5 class="my-0 mr-md-auto font-weight-normal">Reward System</h5>
+  <nav class="my-2 my-md-0 mr-md-3">
+    
+    
+  </nav>
+  {% if user.is_authenticated %}
+  <a class="btn btn-outline-primary" href="{% url 'signup' %}">註冊管理者</a>
+  <a class="btn btn-outline-primary" href="{% url 'createcategory' %}">新增類別</a>
+  <a class="btn btn-outline-primary" href="{% url 'createstudentid' %}">新增學生</a>
+  <a class="btn btn-outline-primary" href="{% url 'managecenter' %}">新增加扣點狀況</a>
+  <a class="btn btn-outline-primary" href="javascript:{document.getElementById('logout').submit()}">Log out</a>
+  <form id='logout' method='POST' action="{% url 'logout' %}">
+    {% csrf_token %}
+    <input type='hidden'/>
+  <form/>
+  {% else %}
+  <a class="btn btn-outline-primary" href="{% url 'login' %}">Log in</a>
+  {% endif %}
+</div>
+
+{% block content %}
+
+{% endblock %}

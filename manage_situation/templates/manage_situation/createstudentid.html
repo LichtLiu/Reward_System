@@ -1,0 +1,34 @@
+
+
+
+<h1>Create_Stu_id</h1>
+{% if error %}
+
+{{ error }}
+
+<br />
+<br />
+{% endif %}
+
+
+
+<form method='POST' action='{% url 'createstudentid' %}' enctype='multipart/form-data'>
+
+{% csrf_token %}
+
+<br />
+學號id:
+<input type='text' name='id'/>
+<br />
+隊號number:
+<input type='text' name='number'/>
+<br />
+
+姓名name:
+<input type='text' name='name'/>
+<br />
+
+
+
+<input class='btn btn-primary' type='submit' value='Add student'/>
+<form/>
