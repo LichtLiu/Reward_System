@@ -50,6 +50,7 @@ def createstudentid(request):
 def managecenter(request):
     studentdata = Student_id.objects
     categorydata = Category.objects
+    cause = Category.objects.filter(category="加點")
     if request.method == 'POST':
         if request.POST['student_id'] and request.POST['category'] and request.POST['cuase'] and request.POST['pub_date'] and request.POST['manager']:
             manage = Manage_Center()
@@ -62,4 +63,4 @@ def managecenter(request):
         else:
             return render(request,'manage_situation/managesituation.html',{'error':'nope'})
     else:
-        return render(request,'manage_situation/managesituation.html',{"student":studentdata,"category":categorydata})
+        return render(request,'manage_situation/managesituation.html',{"student":studentdata,"category":categorydata,"cause":cause})
