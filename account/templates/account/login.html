@@ -5,12 +5,6 @@
 
 {% endif %}
 
-
-
-
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -46,7 +40,7 @@
 				<form class="login100-form validate-form" method='POST' action='{% url 'login'%}' >
                 {% csrf_token %}
 					<span class="login100-form-title">
-						Member Login
+						Manager Login
 					</span>
                     <p>{{ error }}</p>
 					<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
