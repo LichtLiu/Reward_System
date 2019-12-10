@@ -6,7 +6,11 @@ def home(request):
     return render(request,'manage_situation/home.html')
 
 def managerhome(request):
-    return render(request,'manage_situation/managerhome.html')
+    situation_list = Manage_Center.objects.all()
+    context = {
+        'situations':situation_list
+    }
+    return render(request,'manage_situation/managerhome.html', context)
 # Create your views here.
 @login_required
 def createcategory(request):
