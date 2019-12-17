@@ -36,9 +36,9 @@ def createcategory(request):
 @login_required
 def createstudentid(request):
     if request.method == 'POST':
-        if request.POST['id'] and request.POST['number'] and request.POST['name']:
+        if request.POST['number'] and request.POST['name']:
             student = Student_id()
-            student.id = request.POST['id']
+            student.student_id = request.POST['student_id']
             student.number = request.POST['number']
             student.name = request.POST['name']
             student.manager = request.user
@@ -53,18 +53,17 @@ def createstudentid(request):
 
 def managecenter(request):
     studentdata = Student_id.objects
-    categorydata = Category.objects
-    cause = Category.objects.filter(category="加點")
+    category = Category.objects
     if request.method == 'POST':
-        if request.POST['student_id'] and request.POST['category'] and request.POST['cuase'] and request.POST['pub_date'] and request.POST['manager']:
+        if request.POST['student_id'] and request.POST['category'] and request.POST['pub_date']:
             manage = Manage_Center()
             manage.student_id = request.POST['student_id']
             manage.category = request.POST['category']
-            manage.cuase = request.POST['cuase']
             manage.pub_date = request.POST['pub_date']
             manage.manager = request.user
+            manage.save()
             return redirect('managerhome')
         else:
             return render(request,'status/managesituation.html',{'error':'nope'})
     else:
-        return render(request,'status/managesituation.html',{"student":studentdata,"category":categorydata,"cause":cause})
+        return render(request,'status/managesituation.html',{"student":studentdata,"category":category })

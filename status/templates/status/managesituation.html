@@ -30,20 +30,14 @@
 類別category:
 <select name='category'>
 {% for category in category.all %}
-    {% ifchanged %}<option value="{{ category.category }}">--{{ category.category }}</option>{% endifchanged %}
+    <option value="{{ category.category }}" >{{ category.cause }} </option>
 {% endfor %}
 </select>
 <br />
 
-事由cuase:
-<select name='cuase'>
-{% for cause in cause.all %}
-    {% ifchanged %}<option value="{{ cause.cause }}">--{{cause.cause}}</option>{% endifchanged %}
-{% endfor %}
-</select>
 
 日期pub_date:
-<input type='text' name='pub_date'/>
+<input type='date' name='pub_date'/>
 <br />
 
 
