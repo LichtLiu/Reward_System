@@ -1,0 +1,51 @@
+
+
+
+<h1>Manager home</h1>
+{% if error %}
+
+{{ error }}
+
+<br />
+<br />
+{% endif %}
+
+
+
+<form method='POST' action='{% url 'managecenter' %}' enctype='multipart/form-data'>
+
+{% csrf_token %}
+
+<br />
+
+學號student_id:
+<select name='student_id'/>
+{% for student in student.all %}
+    <option value="{{ student.student_id }}">{{ student.name }}</option>
+{% endfor %}
+</select>
+
+<br />
+
+類別category:
+<select name='category'>
+{% for category in category.all %}
+    {% ifchanged %}<option value="{{ category.category }}">--{{ category.category }}</option>{% endifchanged %}
+{% endfor %}
+</select>
+<br />
+
+事由cuase:
+<select name='cuase'>
+{% for cause in cause.all %}
+    {% ifchanged %}<option value="{{ cause.cause }}">--{{cause.cause}}</option>{% endifchanged %}
+{% endfor %}
+</select>
+
+日期pub_date:
+<input type='text' name='pub_date'/>
+<br />
+
+
+<input class='btn btn-primary' type='submit' value='Submit'/>
+<form/>

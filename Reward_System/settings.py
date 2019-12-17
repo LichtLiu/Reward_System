@@ -31,7 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'manage_situation.apps.ManageSituationConfig',
+    'status.apps.StatusConfig',
     'account.apps.AccountConfig',
     # 'reward.apps.RewardConfig',
     'django.contrib.admin',
