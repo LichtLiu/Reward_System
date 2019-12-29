@@ -19,7 +19,8 @@ def managerhome(request):
         'filter_by_week':filter_by_week
     }
     return render(request,'status/managerhome.html', context)
-# Create your views here.
+
+
 @login_required
 def createcategory(request):
     if request.method == 'POST':
@@ -39,6 +40,15 @@ def createcategory(request):
     else:
         return render(request,'status/createcategory.html')
 
+def categoryview(request):
+    category = Category.objects.all()
+    return render(request,'status/categoryview.html',{'category':category})
+
+def deletecat(request, id):
+    category = Category.objects.get(id=id)
+    category.delete()
+    return redirect("categoryview")
+        
 
 
 @login_required
@@ -59,6 +69,14 @@ def createstudentid(request):
     else:
         return render(request,'status/createstudentid.html')
 
+def studentview(request):
+    student = Student.objects.order_by('number')
+    return render(request,'status/studentview.html',{'student':student})
+
+def deletestudent(request, id):
+    student = Student.objects.get(id=id)
+    student.delete()
+    return redirect("studentview")
 # def managecenter(request):
 #     studentdata = Student.objects
 #     category = Category.objects
