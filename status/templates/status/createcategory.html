@@ -1,6 +1,38 @@
 
+<br />
+{% if error %}
 
+{{ error }}
 
+<br />
+<br />
+{% endif %}
+<style>
+    input{
+        border-radius: 5px;
+    }
+
+    .contain {
+        width:500px;
+        padding-top:10px;
+        padding-left:50px;
+        
+    }
+
+</style>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Bootstrap Table - Filter control</title>
+<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css'>
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.10.0/bootstrap-table.min.css'>
+<link rel='stylesheet' href='https://rawgit.com/vitalets/x-editable/master/dist/bootstrap3-editable/css/bootstrap-editable.css'><link rel="stylesheet" href="./style.css">
+
+</head>
+
+<body>
+<!-- partial:index.partial.html -->
+<div class="contain">
 <h1>Create_Cat</h1>
 {% if error %}
 
@@ -20,16 +52,21 @@
 類別名稱category name:
 <input type='text' name='category'/>
 <br />
+<br />
+
 事由cause:
-<input type='text' name='cuase'/>
+<input type='text' name='cause'/>
+<br />
 <br />
 
 罰勤時間time:
 <input type='text' name='time'/>
 <br />
+<br />
 
 加扣點point:
 <input type='text' name='point'/>
+<br />
 <br />
 
 <input class='btn btn-primary' type='submit' value='Add cuase'/>

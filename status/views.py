@@ -1,14 +1,22 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
-from .models import Category, Student_id, Manage_Center
-
+from .models import Category, Student, Manage_Center
+from datetime import datetime, timedelta
 def home(request):
-    return render(request,'status/home.html')
+    one_week_ago = datetime.today() - timedelta(days=7)
+    filter_by_week = Manage_Center.objects.filter(pub_date__gte=one_week_ago)
+    context = {
+        'filter_by_week':filter_by_week
+    }
+    return render(request,'status/home.html',context)
 
 def managerhome(request):
     situation_list = Manage_Center.objects.all()
+    one_week_ago = datetime.today() - timedelta(days=7)
+    filter_by_week = Manage_Center.objects.filter(pub_date__gte=one_week_ago)
     context = {
-        'situations':situation_list
+        'situations':situation_list,
+        'filter_by_week':filter_by_week
     }
     return render(request,'status/managerhome.html', context)
 # Create your views here.
@@ -18,7 +26,7 @@ def createcategory(request):
         if request.POST['category']  and request.POST['time'] and request.POST['point']:
             cat = Category()
             cat.category = request.POST['category']
-            cat.cause =  request.POST.get('cause',False)
+            cat.cause =  request.POST.get('cause')
             cat.time = request.POST['time']
             cat.point = request.POST['point']
             cat.manager = request.user
@@ -37,7 +45,7 @@ def createcategory(request):
 def createstudentid(request):
     if request.method == 'POST':
         if request.POST['number'] and request.POST['name']:
-            student = Student_id()
+            student = Student()
             student.student_id = request.POST['student_id']
             student.number = request.POST['number']
             student.name = request.POST['name']
@@ -51,14 +59,33 @@ def createstudentid(request):
     else:
         return render(request,'status/createstudentid.html')
 
+# def managecenter(request):
+#     studentdata = Student.objects
+#     category = Category.objects
+#     if request.method == 'POST':
+#         if request.POST['student_id'] and request.POST['category'] and request.POST['pub_date']:
+#             manage = Manage_Center()
+#             student_id = request.POST['student_id']
+#             manage.category = request.POST['category']
+#             manage.pub_date = request.POST['pub_date']
+#             manage.manager = request.user
+#             manage.save()
+#             return redirect('managerhome')
+#         else:
+#             return render(request,'status/managesituation.html',{'error':'nope'})
+#     else:
+#         return render(request,'status/managesituation.html',{"student":studentdata,"category":category })
+
 def managecenter(request):
-    studentdata = Student_id.objects
-    category = Category.objects
+    studentdata = Student.objects.get(student_id="1100630224")
+    Student.objects.filter(id=studentdata.id)
+    category = Category.objects.get(category="加點")
+    Category.objects.filter(id=category.id)
     if request.method == 'POST':
-        if request.POST['student_id'] and request.POST['category'] and request.POST['pub_date']:
+        if request.POST['pub_date']:
             manage = Manage_Center()
-            manage.student_id = request.POST['student_id']
-            manage.category = request.POST['category']
+            manage.student_id = studentdata
+            manage.category = category
             manage.pub_date = request.POST['pub_date']
             manage.manager = request.user
             manage.save()

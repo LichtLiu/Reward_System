@@ -1,15 +1,35 @@
 
-
-
-<h1>Create_Stu_id</h1>
-{% if error %}
-
-{{ error }}
+<html>
 
 <br />
-<br />
-{% endif %}
 
+<style>
+    input{
+        border-radius: 5px;
+    }
+
+    .contain {
+        width:500px;
+        padding-top:10px;
+        padding-left:50px;
+        
+    }
+
+</style>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Bootstrap Table - Filter control</title>
+<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css'>
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.10.0/bootstrap-table.min.css'>
+<link rel='stylesheet' href='https://rawgit.com/vitalets/x-editable/master/dist/bootstrap3-editable/css/bootstrap-editable.css'><link rel="stylesheet" href="./style.css">
+
+</head>
+
+<body>
+<!-- partial:index.partial.html -->
+<div class="contain">
+<h1>新建學生資料</h1>
 
 
 <form method='POST' action='{% url 'createstudentid' %}' enctype='multipart/form-data'>
@@ -18,17 +38,29 @@
 
 <br />
 學號id:
-<input type='text' name='student_id'/>
+<input type='text' name='student_id' placeholder='ex:1100630225'/>
+<br />
 <br />
 隊號number:
-<input type='text' name='number'/>
+<input type='text' name='number' placeholder='ex:25'/>
+<br />
 <br />
 
+
 姓名name:
-<input type='text' name='name'/>
+<input type='text' name='name' placeholder='ex:王小明'/>
 <br />
+<br />
+
 
 
 
 <input class='btn btn-primary' type='submit' value='Add student'/>
 <form/>
+
+
+</div>
+
+</body>
+
+</html>

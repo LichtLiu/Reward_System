@@ -33,22 +33,23 @@
 			 data-toolbar="#toolbar">
 	<thead>
 		<tr>
-			<th data-field="state" data-filter-control="input" data-sortable="true">學號</th>
-			<th data-field="examen" data-filter-control="input" data-sortable="true">姓名</th>
-			<th data-field="prenom" data-filter-control="select" data-sortable="true">輸入日期</th>
-			<th data-field="date" data-filter-control="select" data-sortable="true">事由</th>
+			<th data-field="state" data-filter-control="input" data-sortable="true">學號姓名</th>
 			
+			<th data-field="prenom" data-filter-control="input" data-sortable="true">輸入日期</th>
+			<th data-field="date" data-filter-control="select" data-sortable="true">事由</th>
+			<th data-field="examen" data-filter-control="input" data-sortable="true">罰勤時間</th>
 			<th data-field="note" data-filter-control="input" data-sortable="true">加扣點</th>
 		</tr>
 	</thead>
 	<tbody>
 	{% for situation in situations.all %}
 		<tr>
-			<td>{{ situation.student_id.id }}</td>
-			<td>{{ situation.student_id.name }}</td>
+			<td>{{ situation.student_id.student_id }}{{ situation.student_id.name }}</td>
 			<td>{{ situation.pub_date }}</td>
-			<td>{{ situation.cuase }}</td>
+			<td>{{ situation.category.cause }}</td>
+			<td>{{ situation.category.time }}</td>
 			<td>{{ situation.category.point }}</td>
+			
 		</tr>
 	{% endfor %}
 	</tbody>

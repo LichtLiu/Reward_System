@@ -5,7 +5,7 @@ from django.db import models
 from django.contrib.auth.models import User
 
 class Category(models.Model):
-    category = models.CharField(max_length=20)
+    category = models.TextField(max_length=20)
     cause = models.CharField(max_length=50)
     time = models.PositiveIntegerField(default=0)
     point = models.IntegerField(default=0)
@@ -14,7 +14,7 @@ class Category(models.Model):
     def __str__(self):
         return self.category
 
-class Student_id(models.Model):
+class Student(models.Model):
     student_id =  models.PositiveIntegerField(unique=True)
     number = models.PositiveIntegerField()
     name = models.CharField(max_length=20)
@@ -24,7 +24,7 @@ class Student_id(models.Model):
     
 # Create your models here.
 class Manage_Center(models.Model):
-    student_id = models.ForeignKey(Student_id,on_delete=models.CASCADE)
+    student_id = models.ForeignKey(Student,on_delete=models.CASCADE)
     category = models.ForeignKey(Category,on_delete=models.CASCADE)
     pub_date = models.DateTimeField()
     manager = models.ForeignKey(User,on_delete=models.CASCADE)
