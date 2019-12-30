@@ -41,14 +41,17 @@ def createcategory(request):
         return render(request,'status/createcategory.html')
 
 def categoryview(request):
-    category = Category.objects.all()
+    category = Category.objects.order_by('category','point','time')
     return render(request,'status/categoryview.html',{'category':category})
 
 def deletecat(request, id):
     category = Category.objects.get(id=id)
     category.delete()
     return redirect("categoryview")
-        
+
+def editcat(request, id=None):
+    category = Category.objects.get(id=id)
+    return render(request,'status/editcat.html',{'category':category})       
 
 
 @login_required

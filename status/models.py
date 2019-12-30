@@ -12,7 +12,7 @@ class Category(models.Model):
     manager = models.ForeignKey(User,on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.category
+        return self.cause
 
 class Student(models.Model):
     student_id =  models.PositiveIntegerField(unique=True)

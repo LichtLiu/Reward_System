@@ -11,5 +11,6 @@ urlpatterns = [
     path('account/',include('account.urls')),
     path('situation/',include('status.urls')),
     path('deletecat/<int:id>',status.views.deletecat, name='deletecat'),
+    path('editcat/<int:id>',status.views.editcat, name='editcat'),
     path('deletestudent/<int:id>',status.views.deletestudent, name='deletestudent'),
 ]

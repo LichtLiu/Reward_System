@@ -1,0 +1,79 @@
+<html>
+<br />
+{% if error %}
+
+{{ error }}
+
+<br />
+<br />
+{% endif %}
+<style>
+    input{
+        border-radius: 5px;
+    }
+
+    .contain {
+        width:500px;
+        padding-top:10px;
+        padding-left:50px;
+        
+    }
+
+</style>
+
+<head>
+  <meta charset="UTF-8">
+  <title>建立新獎懲</title>
+<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css'>
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.10.0/bootstrap-table.min.css'>
+<link rel='stylesheet' href='https://rawgit.com/vitalets/x-editable/master/dist/bootstrap3-editable/css/bootstrap-editable.css'><link rel="stylesheet" href="./style.css">
+
+</head>
+
+<body>
+<!-- partial:index.partial.html -->
+    <div class="contain">
+        <h1>修改類別</h1>
+        {% if error %}
+
+        {{ error }}
+
+        <br />
+        <br />
+        {% endif %}
+
+
+
+        <form method='POST' class='post-form' action='/editcat/{{ category.id }}' >
+            <input type="hidden" name="id" id="id" required maxlength="10" value="{{ category.id }}"/>
+
+            {% csrf_token %}
+
+            <br />
+            類別名稱category name:
+            <input type='text' name='category' value='{{ category.category }}'/>
+            <br />
+            <br />
+
+            事由cause:
+                <input type='text' name='cause' value='{{ category.cause }}'/>
+            <br />
+            <br />
+
+            罰勤時間time:
+            <input type='text' name='time' value='{{ category.time  }}'/>
+            <br />
+            <br />
+
+            加扣點point:
+            <input type='text' name='point' value='{{ category.point }}'/>
+            <br />
+            <br />
+
+            <input class='btn btn-primary' type='submit' value='Add cuase'/>
+
+
+        </form>
+    </div>
+</body>
+</html>
